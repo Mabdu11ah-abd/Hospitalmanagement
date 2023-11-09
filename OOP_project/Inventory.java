@@ -1,16 +1,64 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Inventory {
-     private ArrayList<Item> ItemsinInventory = new ArrayList<Item>(20);
+    private ArrayList<Item> ItemsinInventory = new ArrayList<Item>(20);
 
     public void Displayinventory()
-    {}
-    public void Addinventory()
-    {}
-    public void updateinventory()
-    {}
 
+    {
+        for (int i = 0; i < ItemsinInventory.size(); i++) {
 
+            ItemsinInventory.get(i).Displayitem();
 
+            System.out.println("\nNext Item\n");
+        }
+    }
 
+    public void Addinventory() {
+        Item temp = new Item();
+        temp.SetItem();
+        ItemsinInventory.add(temp);
+    }
+
+    public void updateinventory() {
+        Scanner input = new Scanner(System.in);
+        // features to add in update inventory method :
+        /*
+         * 1.Display menu of functions that the user can perform:
+         * 2.remove Item
+         * 3.update Quantity of item or price depending on choice
+         * 4.Add item
+         * 5.search Item by ID
+         */
+        System.out.println("1.Update Quantity Or Price :\n2.Remove Item\n3.AddItem\4.Exit");
+        int choice = input.nextInt();
+        while (true) {
+            if (choice == 1) {
+                System.out.println("Enter the id of the Product you want to search : ");
+                choice = input.nextInt();
+                if (searchItem(choice) != -1) {
+                    ItemsinInventory.get(searchItem(choice)).UpdateQuantity();
+                } else {
+                    System.out.println("item does not exist");
+                }
+            } 
+            else if(true){
+
+            }
+
+        }
+
+    }
+
+    public int searchItem(int id) {
+        int index = -1;
+        for (int i = 0; i < ItemsinInventory.size(); i++) {
+            if (ItemsinInventory.get(i).getItemID() == id) {
+                index = ItemsinInventory.get(i).getItemID();
+            }
+        }
+
+        return index;
+    }
 }
