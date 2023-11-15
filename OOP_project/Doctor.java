@@ -15,9 +15,15 @@ public class Doctor {
     public void ScheduleAppointment() {
     }
 
-    public void assignpatients() {
-        System.out.println("How many patients are assigned to the doctor : ");
-        
+    public void assignpatients(ArrayList <Patient> Addpatients) {
+        Scanner input = new Scanner(System.in);
+        System.out.println("How many patients Do you want to assign to the doctor : ");
+        int Num = input.nextInt();
+        for (int i = 0; i < Num; i++) {
+            System.out.println("Enter the ID of Patient you want to add : ");
+            
+        }
+
 
     }
 

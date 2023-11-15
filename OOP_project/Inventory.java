@@ -36,18 +36,18 @@ public class Inventory {
         while (true) {
             if (choice == 1) {
                 System.out.println("Enter the id of the Product you want to search : ");
-                choice = input.nextInt();
+                String TempID = input.nextLine();
                 //nested if else condition
-                if (searchItem(choice) != -1) {
-                    ItemsinInventory.get(searchItem(choice)).UpdateQuantity();
+                if (searchItem(TempID) != -1) {
+                    ItemsinInventory.get(searchItem(TempID)).UpdateQuantity();
                 } else {
                     System.out.println("item does not exist");
                 }
             } else if (choice == 2) {
                 System.out.println("Enter the id of the Product you want to remove : ");
-                choice = input.nextInt();
-                if (searchItem(choice) != -1) {
-                    ItemsinInventory.remove(searchItem(choice));
+                 String TempID = input.nextLine();
+                if (searchItem(TempID) != -1) {
+                    ItemsinInventory.remove(searchItem(TempID));
                 } else {
                     System.out.println("item does not exist");
                 }
@@ -58,14 +58,13 @@ public class Inventory {
 
     }
 
-    public int searchItem(int id) {
+    public int searchItem(String id) {
         int index = -1;
         for (int i = 0; i < ItemsinInventory.size(); i++) {
             if (ItemsinInventory.get(i).getItemID() == id) {
                 index = i;
             }
         }
-
         return index;
     }
 }

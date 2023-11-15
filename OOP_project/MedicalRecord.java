@@ -11,6 +11,9 @@ public class MedicalRecord {
 
     }
     public void PrintRecord()
-    {}
+    {
+
+        
+    }
 
 }
