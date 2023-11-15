@@ -6,7 +6,7 @@ public class User {
     public void RegisterUser() {
     }
 
-    public void LoginUser()
-    { }
+    public void LoginUser(){ 
+    }
 
 }
