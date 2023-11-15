@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class Item {
 
-    private int ItemID;
+    private String ItemID;
     private String Itemname;
     private String Manufacturer;
     private int Quantity;
@@ -15,7 +15,7 @@ public class Item {
 
         // taking user input for item attributes
         System.out.println("Enter the ID of the Item : ");
-        this.ItemID = input.nextInt();
+        this.ItemID = input.nextLine();
         System.out.println("Enter the Name of the Item : ");
         input.nextLine();
         this.Itemname = input.nextLine();
@@ -68,7 +68,7 @@ public class Item {
 
         }
     }
-    public int getItemID() {
+    public String getItemID() {
         return ItemID;
     }
 
