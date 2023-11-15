@@ -13,7 +13,7 @@ public class Patient {
     private Billing Bill;
     private Prescription patientprescription;
 
-    public void SetPatient() {
+    public void SetPatient(Doctor d) {
         // scanner variable for input
         Scanner input = new Scanner(System.in);
 
@@ -26,7 +26,7 @@ public class Patient {
         System.out.println("Enter the Address of the patient : ");
         this.address = input.nextLine();
         System.out.println("Enter the Doctor Incharge Name of the patient : ");
-        this.DoctorIncharge = input.next();
+        this.DoctorIncharge = d;
         System.out.println("Enter the Status of the patient : ");
         //Married, unmarried.
         this.status = input.nextLine();
@@ -67,5 +67,8 @@ public class Patient {
     }
 
     public void UpdateBilling() {
+    }
+        public String getID() {
+        return ID;
     }
 }
