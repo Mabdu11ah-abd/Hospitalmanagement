@@ -7,6 +7,8 @@ public class Doctor {
     private ArrayList<Patient> Patients = new ArrayList<>(20);
 
     public void WritePrescription() {
+
+        
     }
 
     public void UpdatePatientNotes() {
