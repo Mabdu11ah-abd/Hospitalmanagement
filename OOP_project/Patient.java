@@ -13,6 +13,7 @@ public class Patient {
     private Billing Bill;
     private Prescription patientprescription;
 
+
     public void SetPatient(Doctor d) {
         // scanner variable for input
         Scanner input = new Scanner(System.in);
@@ -63,10 +64,21 @@ public class Patient {
         this.status = status;
         System.out.println("Patient information updated for Patient ID: " + ID);
     }
+    public void viewPrescription()
+    {
+    this.patientprescription.DisplayPrescription();
+    }
 
     public void UpdateBilling() {
     }
         public String getID() {
         return ID;
     }
+        public Prescription getPatientprescription() {
+        return patientprescription;
+    }
+        @Override
+        public String toString() {
+            return "Patient [name=" + name + ", ID=" + ID + ", age=" + age + ", address=" + address + "]";
+        }
 }

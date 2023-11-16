@@ -7,12 +7,10 @@ public class Prescription {
     private String medicines;
     private Date PrescriptionDate;
 
-    public void DisplayPrescription(Patient p, Doctor d) {
-        System.out.println("Doctor Appointed :" + Practitioner.getName() + "\n" + Practitioner.getID);
+    public void DisplayPrescription() {
+        System.out.println("Doctor Appointed :" + Practitioner.getName() + "\n" + Practitioner.getID());
         System.out.println("Patient INFO");
-        System.out.println("Patient Name :" + prescribedto.getName());
-        System.out.println("Patient ID :" + prescribedto.getID());
-        System.out.println("Patient Status :" + prescribedto.getStatus());
+        prescribedto.DisplayPatient();
         System.out.println("Doctor INFO ");
 
         System.out.println("Prescribed Medicines : \n" + medicines );
@@ -20,23 +18,23 @@ public class Prescription {
         
     }
 
-    public void UpdatePrescription()
-
-    {
+    public void newPrescription(Doctor d,Patient p) {
         Scanner input = new Scanner(System.in);
-        System.out.println("PRESCRIPTION UPDATE SECTION");
-        System.out.println("What do you want to update");
-        System.out.println("1-Update Medicine");
-        System.out.println("2-Update Prescribed Date");
-        int choice = input.nextInt();
-        if (choice == 1) {
-            System.out.println("Enter new Medicines");
-            medicines = input.nextLine();
-        } else if (choice == 2) {
-            System.out.println("Enter new Prescribed date");
-            // no idea how to us date :(
 
-        }
+        // Set Doctor
+        Practitioner = d;
+
+        // Set Patient
+        prescribedto = p;
+
+        // Set Medicines
+        System.out.println("Enter Prescribed Medicines:");
+        input.nextLine(); // consume the newline character
+        medicines = input.nextLine();
+
+        // Set Prescription Date
+        PrescriptionDate = new Date(); // Current date and time
+
+        System.out.println("Prescription has been written successfully.");
     }
-
 }

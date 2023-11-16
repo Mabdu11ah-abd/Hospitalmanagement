@@ -9,5 +9,5 @@ public class Notification {
      {}
      public void ViewNotifications()
      {}
+} 
 
-}

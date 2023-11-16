@@ -1,4 +1,4 @@
-import java.util.Date;
+
 import java.util.Scanner;
 
 public class Appointment {
@@ -10,7 +10,7 @@ public class Appointment {
     private String AppointmentID;
     private Patient AppointmentPatient; // will store patient type object
     private Doctor AppointmentDoctor; // will store Doctor type Object
-    private Date AppointmentDate; // Google how to use Date Class
+    private String AppointmentDate; // Google how to use Date Class
     private String Appointmenttime; // String type to be set by user
     private String Status; // can either be Pending, Finished or Cancelled;
 
@@ -20,7 +20,10 @@ public class Appointment {
         this.AppointmentPatient = AppointmentPatient;
         this.AppointmentDoctor = AppointmentDoctor;
         System.out.println("Enter the Date you want to take the Appointment from Doctor ");
-        // Smj ni aa rahi :(
+        AppointmentDate = input.nextLine();
+        System.out.println("Enter appointment time : ");
+        Appointmenttime= input.nextLine();
+        
         Status = "Pending";
         // set the details of the appointment
     }
@@ -55,8 +58,6 @@ public class Appointment {
             // Update any information aobut the appointment if needed :
         } else if (sel == 2) {
             System.out.println("APPOINTMENT DATE CHANGE SECTION");
-            // TODO: Finish appointment Date section
-
         }
     }
 
@@ -71,6 +72,12 @@ public class Appointment {
 
         // Mark the Status of the Appointment as "CANCELLED"
 
+    }
+    public void ViewAppointment()
+    {   System.out.println(AppointmentID);
+        System.out.println(AppointmentPatient);
+        System.out.println(AppointmentDoctor);
+        System.out.println("Date : " + AppointmentDate + ",Time : "+ Appointmenttime);
     }
 
 }

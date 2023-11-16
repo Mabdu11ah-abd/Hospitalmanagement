@@ -2,12 +2,12 @@ public class User {
 
     private String username;
     private String password;
-    private String role;  // Admin, Doctor ,Patient
+      // Admin, Doctor ,Patient
 
-    public User(String username, String password, String role) {
+    public User(String username, String password) {
         setUsername(username);
         setPassword(password);
-        setRole(role);
+
     }
 
     public String getUsername() {
@@ -25,15 +25,6 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
     // Method to authenticate the user
     public boolean login(String enteredUsername, String enteredPassword) {
         if (enteredUsername.equals(username) && enteredPassword.equals(password)) {
