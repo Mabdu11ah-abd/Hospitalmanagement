@@ -35,7 +35,7 @@ public class Inventory {
         int choice = input.nextInt();
         while (true) {
             if (choice == 1) {
-                System.out.println("Enter the id of the Product you want to search : ");
+                System.out.println("Enter the id of the Producat you want to search : ");
                 String TempID = input.nextLine();
                 //nested if else condition
                 if (searchItem(TempID) != -1) {

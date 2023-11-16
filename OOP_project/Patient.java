@@ -45,16 +45,14 @@ public class Patient {
         System.out.println(age);
         System.out.println(address);
     }
-    public void updatePatient(String ID, String name, int age, String status, String address) {
-            if (this.ID.equals(ID)) {
+    public void updatePatient(String name, int age, String status, String address) {
+            
                 this.name = name;
                 this.age = age;
                 this.status = status;
                 this.address = address;
                 System.out.println("Patient information updated for Patient ID: " + ID);
-            } else {
-                System.out.println("Patient ID not found.");
-            }
+            
     }
 
     public void addPatient(String name, int age, String ID, String address, String status) {

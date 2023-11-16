@@ -16,6 +16,23 @@ public class Doctor {
 
     public void UpdatePatientNotes() {
     //TODO: Abdullah Task : 
+    Scanner input= new Scanner(System.in);
+    System.out.println("Enter the ID of the patient whos data you want to update : ");
+    String searchID= input.nextLine();
+    if (searchPatients(searchID)!=-1) {
+        System.out.print("Enter patient name : ");
+        String tempname = input.nextLine();
+        System.out.print("Enter Patient Age : ");
+        int tempAge= input.nextInt();
+
+        Patients.get(searchPatients(searchID)).updatePatient(searchID, 0, searchID, searchID);;
+
+        
+    } else {
+        
+    }
+
+
     
     
     
@@ -59,13 +76,15 @@ public class Doctor {
         ID=input.nextLine();
     }
     //search patients method to be used whenever searching by id is required 
-    private boolean searchPatients(String id)
+    private int searchPatients(String id)
     {
-    for (Patient patient : Patients) {
-        if(patient.getID() == id)
-        return true;
+    for (int index = 0; index < Patients.size(); index++) {
+        if(Patients.get(index).getID()==id)
+        {
+            return index;
+        }
     }
-    return false;
+    return -1;
     }
 
 }

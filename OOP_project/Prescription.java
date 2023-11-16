@@ -15,9 +15,9 @@ public class Prescription {
         System.out.println("Patient Status :" + prescribedto.getStatus());
         System.out.println("Doctor INFO ");
 
-        System.out.println("Prescribed Medicines :" + medicines );
+        System.out.println("Prescribed Medicines : \n" + medicines );
         System.out.println("Prescribed Date to patient :" + PrescriptionDate);
-
+        
     }
 
     public void UpdatePrescription()
