@@ -1,16 +1,13 @@
-import java.util.Date;
-
 public class Billing {
-    private float Dueamount;
-    private Date Dueddate;
-
-    public void GenerateInvoice()
+    private float Dueamount=0;
+    public void GenerateInvoice(Patient p)
     {
-
+    System.out.println(p);
+    System.out.println("Due Amount " +Dueamount);
     }
-    public void UpdatePayment()
+    public void UpdatePayment(Patient p, float Newamount)
     {
-
+     Dueamount+=Newamount;
     }
 
 
@@ -22,11 +19,4 @@ public class Billing {
         Dueamount = dueamount;
     }
 
-    public Date getDueddate() {
-        return Dueddate;
-    }
-
-    public void setDueddate(Date dueddate) {
-        Dueddate = dueddate;
-    }
 }

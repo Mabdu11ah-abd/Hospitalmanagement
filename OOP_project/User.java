@@ -2,13 +2,7 @@ public class User {
     private String Role;
     protected String name;
     protected String ID;
-    public String getID() {
-        return ID;
-    }
 
-    public void setID(String iD) {
-        ID = iD;
-    }
 
     private String password;
     // Admin, Doctor ,Patient
@@ -43,6 +37,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+        public String getID() {
+        return ID;
+    }
+
+    public void setID(String iD) {
+        ID = iD;
+    }
 
     // Method to authenticate the user
     public boolean login(String enteredID, String enteredPassword) {
@@ -52,7 +53,6 @@ public class User {
             return false;
         }
     }
-
     // Method to logout.
     public void logout() {
         System.out.println("Logging out. Goodbye, " + name + "!");

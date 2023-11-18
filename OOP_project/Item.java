@@ -7,7 +7,15 @@ public class Item {
     private String Itemname;
     private String Manufacturer;
     private int Quantity;
+    public int getQuantity() {
+        return Quantity;
+    }
+
     private Double Price;
+
+    public Double getPrice() {
+        return Price;
+    }
 
     public void SetItem() {
         // scanner variable for input
@@ -70,5 +78,11 @@ public class Item {
     }
     public String getItemID() {
         return ItemID;
+    }
+
+    @Override
+    public String toString() {
+        return "Item [ItemID=" + ItemID + ", Itemname=" + Itemname + ", Manufacturer=" + Manufacturer + ", Quantity="
+                + Quantity + ", Price=" + Price + "]";
     }
 }

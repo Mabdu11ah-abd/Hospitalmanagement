@@ -1,4 +1,5 @@
 public class Bed {
+    private int DaysOccupied;
     private int bedNumber;
     private boolean isOccupied;
 
@@ -36,6 +37,14 @@ public class Bed {
         } else {
             System.out.println("Bed " + bedNumber + " is already vacant.");
         }
+
+    }
+    public int getDaysOccupied() {
+        return DaysOccupied;
+    }
+
+    public void setDaysOccupied(int daysOccupied) {
+        DaysOccupied = daysOccupied;
     }
 
     // Other relevant methods

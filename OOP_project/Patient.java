@@ -9,14 +9,21 @@ public class Patient extends User{
     private Doctor DoctorIncharge;
     private Bed BedUsed;
     private MedicalRecord Record;
+
     private Billing Bill;
+    public Billing getBill() {
+        return Bill;
+    }
+    public void setBill(Billing bill) {
+        Bill = bill;
+    }
     private Prescription patientprescription;
 
 
     public void setPatientprescription(Prescription patientprescription) {
         this.patientprescription = patientprescription;
     }
-    public void SetPatient(Doctor d) {
+    public void SetPatient() {
         // scanner variable for input
         Scanner input = new Scanner(System.in);
 
@@ -28,13 +35,10 @@ public class Patient extends User{
         this.ID = input.nextLine();
         System.out.println("Enter the Address of the patient : ");
         this.address = input.nextLine();
-        System.out.println("Enter the Doctor Incharge Name of the patient : ");
-        this.DoctorIncharge = d;
+
         System.out.println("Enter the Status of the patient : ");
-        //Married, unmarried.
         this.status = input.nextLine();
         System.out.println("Enter the age of the patient : ");
-        //Married, unmarried.
         this.age = input.nextInt();
     }
     public void DisplayPatient() {
@@ -83,4 +87,16 @@ public class Patient extends User{
         public String toString() {
             return "Patient [name=" + name + ", ID=" + ID + ", age=" + age + ", address=" + address + "]";
         }
+            public MedicalRecord getRecord() {
+        return Record;
+    }
+    public void setRecord(MedicalRecord record) {
+        Record = record;
+    }
+        public Bed getBedUsed() {
+        return BedUsed;
+    }
+    public void setBedUsed(Bed bedUsed) {
+        BedUsed = bedUsed;
+    }
 }

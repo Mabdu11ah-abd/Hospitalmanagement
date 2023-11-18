@@ -14,7 +14,7 @@ public class Appointment {
     private String Appointmenttime; // String type to be set by user
     private String Status; // can either be Pending, Finished or Cancelled;
 
-    public void ScheduleAppointment(String AppointmentID, Patient AppointmentPatient, Doctor AppointmentDoctor) {
+    public  Appointment(Patient AppointmentPatient, Doctor AppointmentDoctor) {
         System.out.println("SCHEDULE APPOINTMENT SECTION");
         this.AppointmentID = AppointmentID;
         this.AppointmentPatient = AppointmentPatient;

@@ -3,26 +3,24 @@ import java.util.Scanner;
 
 public class Doctor extends User {
     private String Specialization;
+
     public String getSpecialization() {
         return Specialization;
     }
 
     private ArrayList<Patient> Patients = new ArrayList<>(20);
-    private ArrayList<Appointment> appointments= new ArrayList<>();
+    private ArrayList<Appointment> appointments = new ArrayList<>();
 
     public void WritePrescription() {
-        Scanner input= new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
 
         System.out.println("Enter the ID of the patient whos ID prescription you want to write : ");
         System.out.println("Enter the ID of the patient whos data you want to update : ");
         String searchID = input.nextLine();
-        if (searchPatients(searchID) != -1)
-        {
-            Prescription temPrescription = new Prescription(this,Patients.get(searchPatients(searchID)));
+        if (searchPatients(searchID) != -1) {
+            Prescription temPrescription = new Prescription(this, Patients.get(searchPatients(searchID)));
             Patients.get(searchPatients(searchID)).setPatientprescription(temPrescription);
-        }
-        else 
-        {
+        } else {
             System.out.println("Wrong ID has been entered");
         }
     }
@@ -46,26 +44,24 @@ public class Doctor extends User {
             Patients.get(searchPatients(searchID)).updatePatient(tempname, tempAge, tempStatus, tempAddress);
         } else {
             System.out.println("Patient ID does not exist : ");
-
         }
 
     }
-    public void ScheduleAppointment()
-    {
-        
+
+    public void addAppointment(Appointment appointment) {
+        appointments.add(appointment);
     }
+
     public void assignpatients(ArrayList<Patient> Addpatients) {
         Scanner input = new Scanner(System.in);
         System.out.println("How many patients Do you want to assign to the doctor : ");
         int Num = input.nextInt();
         for (int i = 0; i < Num; i++) {
             System.out.println("Enter the ID of Patient you want to add : ");
-             String searchID = input.nextLine();
-            if (searchPatients(searchID) != -1) 
-            {
+            String searchID = input.nextLine();
+            if (searchPatients(searchID) != -1) {
                 Patients.add(Addpatients.get(searchPatients(searchID)));
-            }
-            else{
+            } else {
                 System.out.println("Invalid ID entered, enter your ID again : ");
                 i--;
             }
@@ -80,16 +76,14 @@ public class Doctor extends User {
             System.out.println("Enter the ID of the patient whos data you want to view : ");
             String searchID = input.nextLine();
             if (searchPatients(searchID) != -1) {
-               Patients.get(searchPatients(searchID)).DisplayPatient();
-            }
-            else 
-            {
+                Patients.get(searchPatients(searchID)).DisplayPatient();
+            } else {
                 System.out.println("Invalid ID entered : ");
             }
 
         } else if (choice == 2) {
             {
-                for (Patient  patient : Patients ) {
+                for (Patient patient : Patients) {
                     patient.DisplayPatient();
                 }
             }
@@ -117,8 +111,9 @@ public class Doctor extends User {
         }
         return -1;
     }
-    //*Getter and setter methods for the class  */
-        public String getName() {
+
+    // *Getter and setter methods for the class */
+    public String getName() {
         return name;
     }
 
@@ -136,7 +131,7 @@ public class Doctor extends User {
 
     @Override
     public String toString() {
-        return "Doctor [Name= "+name + ",Specialization=" + Specialization + "]";
+        return "Doctor [Name= " + name + ",Specialization=" + Specialization + "]";
     }
 
 }
