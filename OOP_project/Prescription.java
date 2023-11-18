@@ -6,6 +6,26 @@ public class Prescription {
     Patient prescribedto;
     private String medicines;
     private Date PrescriptionDate;
+    public Prescription(Doctor doctor, Patient patient) {
+        Scanner input = new Scanner(System.in);
+
+        // Set Doctor
+        this.Practitioner = doctor;
+
+        // Set Patient
+        this.prescribedto = patient;
+
+        // Set Medicines
+        System.out.println("Enter Prescribed Medicines:");
+        input.nextLine(); // consume the newline character
+        this.medicines = input.nextLine();
+
+        // Set Prescription Date
+        this.PrescriptionDate = new Date(); // Current date and time
+
+        System.out.println("Prescription has been written successfully.");
+    }
+
 
     public void DisplayPrescription() {
         System.out.println("Doctor Appointed :" + Practitioner.getName() + "\n" + Practitioner.getID());

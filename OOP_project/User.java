@@ -2,14 +2,22 @@ public class User {
     private String Role;
     protected String name;
     protected String ID;
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String iD) {
+        ID = iD;
+    }
+
     private String password;
     // Admin, Doctor ,Patient
 
-    public void RegisterUser(String username, String password, String Role) {
+    public void RegisterUser(String username, String password,String ID, String Role) {
         setName(username);
         setPassword(password);
         setRole(Role);
-
+        setID(ID);        
     }
 
     public String getRole() {

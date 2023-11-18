@@ -13,6 +13,9 @@ public class Patient extends User{
     private Prescription patientprescription;
 
 
+    public void setPatientprescription(Prescription patientprescription) {
+        this.patientprescription = patientprescription;
+    }
     public void SetPatient(Doctor d) {
         // scanner variable for input
         Scanner input = new Scanner(System.in);

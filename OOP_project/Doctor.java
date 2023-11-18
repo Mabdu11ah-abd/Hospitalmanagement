@@ -5,14 +5,16 @@ public class Doctor extends User {
     private ArrayList<Patient> Patients = new ArrayList<>(20);
     private ArrayList<Appointment> appointments= new ArrayList<>();
 
-    public void WritePrescription(Prescription nPrescription) {
+    public void WritePrescription() {
         Scanner input= new Scanner(System.in);
+
         System.out.println("Enter the ID of the patient whos ID prescription you want to write : ");
         System.out.println("Enter the ID of the patient whos data you want to update : ");
         String searchID = input.nextLine();
         if (searchPatients(searchID) != -1)
         {
-            Patients.get(searchPatients(searchID)).getPatientprescription().newPrescription(this, Patients.get(searchPatients(searchID)));
+            Prescription temPrescription = new Prescription(this,Patients.get(searchPatients(searchID)));
+            Patients.get(searchPatients(searchID)).setPatientprescription(temPrescription);
         }
         else 
         {
