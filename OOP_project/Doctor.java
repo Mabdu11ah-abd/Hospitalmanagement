@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Doctor {
-    private String Name;
-    private String ID;
+public class Doctor extends User {
     private ArrayList<Patient> Patients = new ArrayList<>(20);
     private ArrayList<Appointment> appointments= new ArrayList<>();
 
@@ -98,7 +96,7 @@ public class Doctor {
     public void SetDoctor() {
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the name : ");
-        Name = input.nextLine();
+        name = input.nextLine();
         System.out.println("Enter the doctors ID : ");
         ID = input.nextLine();
     }
@@ -114,11 +112,11 @@ public class Doctor {
     }
     //*Getter and setter methods for the class  */
         public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        name = name;
     }
 
     public String getID() {
@@ -131,6 +129,6 @@ public class Doctor {
 
     @Override
     public String toString() {
-        return "Doctor [Name=" + Name + ", ID=" + ID + "]";
+        return "Doctor [Name=" + name + ", ID=" + ID + "]";
     }
 }

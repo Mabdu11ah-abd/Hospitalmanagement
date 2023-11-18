@@ -1,7 +1,6 @@
-import java.util.Objects;
 import java.util.Scanner;
 
-public class Patient {
+public class Patient extends User{
     private String name;
     private String ID;
     private int age;

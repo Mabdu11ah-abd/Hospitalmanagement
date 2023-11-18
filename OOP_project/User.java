@@ -1,21 +1,31 @@
 public class User {
-
-    private String username;
+    private String Role;
+    protected String name;
+    protected String ID;
     private String password;
-      // Admin, Doctor ,Patient
+    // Admin, Doctor ,Patient
 
-    public User(String username, String password) {
-        setUsername(username);
+    public void RegisterUser(String username, String password, String Role) {
+        setName(username);
         setPassword(password);
+        setRole(Role);
 
     }
 
-    public String getUsername() {
-        return username;
+    public String getRole() {
+        return Role;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setRole(String role) {
+        Role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String username) {
+        this.name = username;
     }
 
     public String getPassword() {
@@ -25,19 +35,18 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
     // Method to authenticate the user
-    public boolean login(String enteredUsername, String enteredPassword) {
-        if (enteredUsername.equals(username) && enteredPassword.equals(password)) {
-            System.out.println("Login successful. Welcome, " + username + "!");
+    public boolean login(String enteredID, String enteredPassword) {
+        if (enteredID.equals(ID) && enteredPassword.equals(password)) {
             return true;
         } else {
-            System.out.println("Invalid username or password. Please try again.");
             return false;
         }
     }
 
-    //Method to logout.
+    // Method to logout.
     public void logout() {
-        System.out.println("Logging out. Goodbye, " + username + "!");
+        System.out.println("Logging out. Goodbye, " + name + "!");
     }
 }
