@@ -53,12 +53,13 @@ public class Main {
                     System.out.println(
                             "Enter 1 to view Patient : \nEnter 2 to Write Prescription\n Enter 3 to UpdatePatient Data ");
                     if (Choice == 1) {
-                        ((Doctor)CurrentUser).ViewPatients();
+                        ((Doctor) CurrentUser).ViewPatients();
 
                     } else if (Choice == 2) {
-                        ((Doctor)CurrentUser).WritePrescription();
+                        ((Doctor) CurrentUser).WritePrescription();
 
                     } else if (Choice == 3) {
+                        ((Doctor) CurrentUser).UpdatePatientNotes();
 
                     } else if (Choice == 0) {
                         System.out.println("Exited Successfully : ");
@@ -68,8 +69,47 @@ public class Main {
                 } while (Choice != 0);
 
             } else if (CurrentUser instanceof Patient) {
+                Choice = input.nextInt();
+                System.out.println(
+                        "Enter 1 To view Current Information \nEnter 2 to view Medical Record :\nEnter 3 to Buy Medicine from Inventory : \nEnter 4 to view Current Notifications :\nEnter 5 to view Available Doctors \nEnter 6 to Exit : ");
+                do {
+                    if (Choice == 1) {
+                        System.out.println(CurrentUser);
+                    } else if (Choice == 2) {
+                        
+                        // TODO: Later
+                    } else if (Choice == 3) {
+                        // TODO: Later
+                    } else if (Choice == 4) {
+                        // TODO: Later
+                    } else if (Choice == 5) {
+                        System.out.println(
+                                "What type of Doctor do you want to visit :\nTypeA\nTypeB\nTypeC\nTypeD\nTypeE");
+                        int docChoice = input.nextInt();
+                        if (docChoice == 1) {
+                            ViewSpecialist("TypeA",allUsers);
 
-            } else if (CurrentUser.getID() == "A-1") {
+                        } else if (docChoice == 2) {
+                            ViewSpecialist("TypeB",allUsers);
+
+                        } else if (docChoice == 3) {
+                            ViewSpecialist("TypeC",allUsers);
+
+                        } else if (docChoice == 4) {
+                            ViewSpecialist("TypeD",allUsers);
+
+                        } else if (docChoice == 5) {
+                            ViewSpecialist("TypeA",allUsers);
+                        } else {
+                            System.out.println("Invalid Output");
+                        }
+                    } else {
+                        System.out.println("wrong choice : ");
+                    }
+                } while (Choice != 0);
+            }
+
+            else if (CurrentUser.getID() == "A-1") {
 
             } else {
                 System.out.println("An error Has occurred : ");
@@ -93,5 +133,14 @@ public class Main {
             }
         }
         return null;
+    }
+
+    private static void ViewSpecialist(String type, ArrayList<User> allUsers) {
+        for (User user : allUsers) {
+            if (user instanceof Doctor) {
+                Doctor d = (Doctor) user;
+                System.out.println(d);
+            }
+        }
     }
 }

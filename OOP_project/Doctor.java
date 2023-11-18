@@ -2,6 +2,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Doctor extends User {
+    private String Specialization;
+    public String getSpecialization() {
+        return Specialization;
+    }
+
     private ArrayList<Patient> Patients = new ArrayList<>(20);
     private ArrayList<Appointment> appointments= new ArrayList<>();
 
@@ -131,6 +136,7 @@ public class Doctor extends User {
 
     @Override
     public String toString() {
-        return "Doctor [Name=" + name + ", ID=" + ID + "]";
+        return "Doctor [Name= "+name + ",Specialization= " + Specialization + "]";
     }
+
 }
