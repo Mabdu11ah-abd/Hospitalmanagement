@@ -136,7 +136,7 @@ public class Doctor extends User {
 
     @Override
     public String toString() {
-        return "Doctor [Name= "+name + ",Specialization= " + Specialization + "]";
+        return "Doctor [Name= "+name + ",Specialization=" + Specialization + "]";
     }
 
 }

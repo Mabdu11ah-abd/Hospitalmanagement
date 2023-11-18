@@ -76,8 +76,7 @@ public class Main {
                     if (Choice == 1) {
                         System.out.println(CurrentUser);
                     } else if (Choice == 2) {
-                        
-                        // TODO: Later
+                       //CurrentUser.ViewMedicalRecord();
                     } else if (Choice == 3) {
                         // TODO: Later
                     } else if (Choice == 4) {
