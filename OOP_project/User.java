@@ -1,53 +1,35 @@
 public class User {
-    private String Role;
     protected String name;
     protected String ID;
-
-
-    private String password;
+    protected String Password;
     // Admin, Doctor ,Patient
 
-    public void RegisterUser(String username, String password,String ID, String Role) {
+    public void RegisterUser(String username, String password,String ID) {
         setName(username);
         setPassword(password);
-        setRole(Role);
         setID(ID);        
     }
-
-    public String getRole() {
-        return Role;
-    }
-
-    public void setRole(String role) {
-        Role = role;
-    }
-
     public String getName() {
         return name;
     }
-
     public void setName(String username) {
         this.name = username;
     }
-
     public String getPassword() {
-        return password;
+        return Password;
     }
-
     public void setPassword(String password) {
-        this.password = password;
+        this.Password = password;
     }
         public String getID() {
         return ID;
     }
-
     public void setID(String iD) {
         ID = iD;
     }
-
     // Method to authenticate the user
     public boolean login(String enteredID, String enteredPassword) {
-        if (enteredID.equals(ID) && enteredPassword.equals(password)) {
+        if (enteredID.equals(ID) && enteredPassword.equals(Password)) {
             return true;
         } else {
             return false;

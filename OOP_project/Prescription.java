@@ -29,9 +29,8 @@ public class Prescription {
     public void DisplayPrescription() {
         System.out.println("Doctor Appointed :" + Practitioner.getName() + "\n" + Practitioner.getID());
         System.out.println("Patient INFO");
-        prescribedto.DisplayPatient();
+        System.out.println(prescribedto);
         System.out.println("Doctor INFO ");
-
         System.out.println("Prescribed Medicines : \n" + medicines );
         System.out.println("Prescribed Date to patient :" + PrescriptionDate);
         

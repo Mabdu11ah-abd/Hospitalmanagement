@@ -21,14 +21,16 @@ public class Inventory {
 
         return 0;
     }
+    public void addHardcoded(Item item)
+    {
+        ItemsinInventory.add(item);
+    }
 
     public void Displayinventory()
-
     {
         for (int i = 0; i < ItemsinInventory.size(); i++) {
 
-            ItemsinInventory.get(i).Displayitem();
-
+            System.out.println(ItemsinInventory.get(i));
             System.out.println("\nNext Item\n");
         }
     }
@@ -47,9 +49,11 @@ public class Inventory {
          * 2.remove Item
          * 3.update Quantity of item or price depending on choice
          */
-        System.out.println("1.Update Quantity Or Price :\n2.Remove Item\n3.AddItem\4.Exit");
-        int choice = input.nextInt();
+
         while (true) {
+        System.out.println("1.Update Quantity Or Price :\n2.Remove Item\n3.Exit");
+        int choice = input.nextInt();
+        input.nextLine();
             if (choice == 1) {
                 System.out.println("Enter the id of the Producat you want to search : ");
                 String TempID = input.nextLine();
@@ -67,9 +71,15 @@ public class Inventory {
                 } else {
                     System.out.println("item does not exist");
                 }
-
             }
-
+            else if(choice==3)
+            {
+                return;
+            }
+            else 
+            {
+                System.out.println("Invalid input : ");
+            }
         }
 
     }

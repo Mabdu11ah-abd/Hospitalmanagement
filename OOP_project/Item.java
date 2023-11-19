@@ -1,18 +1,24 @@
-import java.util.ArrayList;
 import java.util.Scanner;
-
 public class Item {
-
     private String ItemID;
     private String Itemname;
     private String Manufacturer;
     private int Quantity;
+    public Item(String name, String manufacturer, int quantity,String ItemID,double itemprice) {
+        this.ItemID =ItemID;
+        this.Itemname = name;
+        this.Manufacturer = manufacturer;
+        this.Quantity = quantity;
+        this.Price=itemprice;
+    }
     public int getQuantity() {
         return Quantity;
     }
 
     private Double Price;
 
+    public Item() {
+    }
     public Double getPrice() {
         return Price;
     }
@@ -25,7 +31,6 @@ public class Item {
         System.out.println("Enter the ID of the Item : ");
         this.ItemID = input.nextLine();
         System.out.println("Enter the Name of the Item : ");
-        input.nextLine();
         this.Itemname = input.nextLine();
         System.out.println("Enter the Manufacturer Name of the item : ");
         this.Manufacturer = input.nextLine();
@@ -52,8 +57,9 @@ public class Item {
     public void UpdateQuantity() {
         Scanner input = new Scanner(System.in);
         System.out.println("WHat do you want to change about the item : ");
-        System.out.println("1.Price\n2.Quantity\n3.Exit");
+ 
         while (true) {
+            System.out.println("1.Price\n2.Quantity\n3.Exit");
             int choice = input.nextInt();
             if(choice==1)
             {

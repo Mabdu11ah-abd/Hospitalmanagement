@@ -3,19 +3,33 @@ import java.util.Scanner;
 
 public class Doctor extends User {
     private String Specialization;
-
-    public String getSpecialization() {
-        return Specialization;
-    }
-
     private ArrayList<Patient> Patients = new ArrayList<>(20);
     private ArrayList<Appointment> appointments = new ArrayList<>();
+//Constructors of the class 
+    public Doctor(String username, String password, String id, String sp) {
+        ID = id;
+        Specialization = sp;
+        name = username;
+        Password = password;
+    }
 
+    public Doctor() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the Name of the Doctor : ");
+        this.name = input.nextLine();
+        System.out.println("Enter the ID of the Doctor : ");
+        this.ID = input.nextLine();
+        System.out.println("Enter Specialization of the Doctor : ");
+        this.Specialization = input.nextLine();
+        System.out.println("Enter Password of the new Doctor : ");
+        Password = input.nextLine();
+    }
+//Methods of the class 
     public void WritePrescription() {
         Scanner input = new Scanner(System.in);
 
         System.out.println("Enter the ID of the patient whos ID prescription you want to write : ");
-        System.out.println("Enter the ID of the patient whos data you want to update : ");
+
         String searchID = input.nextLine();
         if (searchPatients(searchID) != -1) {
             Prescription temPrescription = new Prescription(this, Patients.get(searchPatients(searchID)));
@@ -32,40 +46,18 @@ public class Doctor extends User {
         System.out.println("Enter the ID of the patient whos data you want to update : ");
         String searchID = input.nextLine();
         if (searchPatients(searchID) != -1) {
-            System.out.print("Enter patient name : ");
-            String tempname = input.nextLine();
-            System.out.print("Enter Patient Age : ");
-            int tempAge = input.nextInt();
-            System.out.print("Enter current status of pateint : ");
-            input.nextLine();
-            String tempStatus = input.nextLine();
-            System.out.println("Enter current Address : ");
-            String tempAddress = input.nextLine();
-            Patients.get(searchPatients(searchID)).updatePatient(tempname, tempAge, tempStatus, tempAddress);
+            Patients.get(searchPatients(searchID)).SetPatient();
         } else {
             System.out.println("Patient ID does not exist : ");
         }
-
     }
 
     public void addAppointment(Appointment appointment) {
         appointments.add(appointment);
     }
 
-    public void assignpatients(ArrayList<Patient> Addpatients) {
-        Scanner input = new Scanner(System.in);
-        System.out.println("How many patients Do you want to assign to the doctor : ");
-        int Num = input.nextInt();
-        for (int i = 0; i < Num; i++) {
-            System.out.println("Enter the ID of Patient you want to add : ");
-            String searchID = input.nextLine();
-            if (searchPatients(searchID) != -1) {
-                Patients.add(Addpatients.get(searchPatients(searchID)));
-            } else {
-                System.out.println("Invalid ID entered, enter your ID again : ");
-                i--;
-            }
-        }
+    public void assignpatient(Patient patient) {
+        Patients.add(patient);
     }
 
     public void ViewPatients() {
@@ -76,15 +68,14 @@ public class Doctor extends User {
             System.out.println("Enter the ID of the patient whos data you want to view : ");
             String searchID = input.nextLine();
             if (searchPatients(searchID) != -1) {
-                Patients.get(searchPatients(searchID)).DisplayPatient();
+                System.out.println(Patients.get(searchPatients(searchID)));
             } else {
                 System.out.println("Invalid ID entered : ");
             }
-
         } else if (choice == 2) {
             {
                 for (Patient patient : Patients) {
-                    patient.DisplayPatient();
+                    System.out.println(patient);
                 }
             }
 
@@ -94,34 +85,23 @@ public class Doctor extends User {
 
     }
 
-    public void SetDoctor() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter the name : ");
-        name = input.nextLine();
-        System.out.println("Enter the doctors ID : ");
-        ID = input.nextLine();
-    }
-
     public void ManageAppointments() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter 1 to view upcoming appointments");
-        System.out.println("Enter 2 to view all appointments (including completed and cancelled)");
-        System.out.println("Enter 3 to CancelAppointments : ");
         while (true) {
+            System.out.println("Enter 1 to view upcoming appointments");
+            System.out.println("Enter 3 to CancelAppointments : ");
+            System.out.println("Enter 0 to exits");
+
             int choice = input.nextInt();
+            if (choice == 0) {
+                break;
+            }
             if (choice == 1) {
-                System.out.println("Upcoming Appointments:");
-                for (Appointment appointment : appointments) {
-                    if (appointment.getStatus().equals("PENDING")) {
-                        appointment.ViewAppointment();
-                    }
-                }
-            } else if (choice == 2) {
                 System.out.println("All Appointments:");
                 for (Appointment appointment : appointments) {
                     appointment.ViewAppointment();
                 }
-            } else if (choice == 3) {
+            } else if (choice == 2) {
                 System.out.println("Enter ID of the Appointment you want to mark as Finished : ");
                 String cancelAppointmentID = input.nextLine();
                 for (Appointment appointment : appointments) {
@@ -144,37 +124,23 @@ public class Doctor extends User {
             appointments.removeAll(appointmentsToRemove);
         }
     }
+//getter method of class
+    public String getSpecialization() {
+        return Specialization;
+    }
 
     // search patients method to be used whenever searching by id is required
     private int searchPatients(String id) {
         for (int index = 0; index < Patients.size(); index++) {
-            if (Patients.get(index).getID() == id) {
+            if (Patients.get(index).getID().equals(id)) {
                 return index;
             }
         }
         return -1;
     }
-
-    // *Getter and setter methods for the class */
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        name = name;
-    }
-
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String iD) {
-        ID = iD;
-    }
-
+//to string method of the class 
     @Override
     public String toString() {
-        return "Doctor [Name= " + name + ",Specialization=" + Specialization + "]";
+        return "Doctor [Name= " + name + ",Specialization=" + Specialization + "ID = " + ID + "]";
     }
-
 }

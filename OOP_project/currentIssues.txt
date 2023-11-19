@@ -1,0 +1,7 @@
+AddDoctor Method does not work make it so that when i add patient to doctor the patient also gets that doctor assigned to his variable 
+
+Fix login menu almost done 
+finish edit patients section
+find and solve null pointer exception 
+Fix medical record
+Enter input validation and prevent registration of same ID
