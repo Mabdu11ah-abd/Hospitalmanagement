@@ -75,7 +75,7 @@ public class MedicalRecord {
             System.out.println("Cannot add prescription. The patient is either discharged or not admitted.");
         }
     }
-    //Method to get data of all prescription of the patient.
+    //Method to get data of all or latest prescription of the patient.
     ArrayList<Prescription> allPrescriptions = new ArrayList<>(prescriptions);
     public void getPrescriptions() {
         System.out.println("Enter 1 to see all prescriptions \n Enter 2 to see latest prescription");
