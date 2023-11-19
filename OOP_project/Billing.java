@@ -1,21 +1,25 @@
 public class Billing {
-    private float Dueamount=0;
+    private double Dueamount=0;
     public void GenerateInvoice(Patient p)
     {
     System.out.println(p);
     System.out.println("Due Amount " +Dueamount);
     }
-    public void UpdatePayment(Patient p, float Newamount)
-    {
+    public void UpdatePayment(double Newamount)
+    { 
      Dueamount+=Newamount;
     }
-
-
-    public float getDueamount() {
+    public void finalPayment(Patient p)
+    {
+        double bedcost = p.getBedUsed().getDaysOccupied()*1500;//flat rate of 1500 rps for every day that the bed is used :
+        Dueamount+=bedcost;
+    
+    }
+    public double getDueamount() {
         return Dueamount;
     }
 
-    public void setDueamount(float dueamount) {
+    public void setDueamount(double dueamount) {
         Dueamount = dueamount;
     }
 

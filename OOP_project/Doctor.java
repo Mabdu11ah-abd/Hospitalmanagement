@@ -19,7 +19,7 @@ public class Doctor extends User {
         String searchID = input.nextLine();
         if (searchPatients(searchID) != -1) {
             Prescription temPrescription = new Prescription(this, Patients.get(searchPatients(searchID)));
-            Patients.get(searchPatients(searchID)).setPatientprescription(temPrescription);
+            Patients.get(searchPatients(searchID)).getRecord().addPrescription(temPrescription);
         } else {
             System.out.println("Wrong ID has been entered");
         }
@@ -100,6 +100,49 @@ public class Doctor extends User {
         name = input.nextLine();
         System.out.println("Enter the doctors ID : ");
         ID = input.nextLine();
+    }
+
+    public void ManageAppointments() {
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter 1 to view upcoming appointments");
+        System.out.println("Enter 2 to view all appointments (including completed and cancelled)");
+        System.out.println("Enter 3 to CancelAppointments : ");
+        while (true) {
+            int choice = input.nextInt();
+            if (choice == 1) {
+                System.out.println("Upcoming Appointments:");
+                for (Appointment appointment : appointments) {
+                    if (appointment.getStatus().equals("PENDING")) {
+                        appointment.ViewAppointment();
+                    }
+                }
+            } else if (choice == 2) {
+                System.out.println("All Appointments:");
+                for (Appointment appointment : appointments) {
+                    appointment.ViewAppointment();
+                }
+            } else if (choice == 3) {
+                System.out.println("Enter ID of the Appointment you want to mark as Finished : ");
+                String cancelAppointmentID = input.nextLine();
+                for (Appointment appointment : appointments) {
+                    if (appointment.getAppointmentID().equals(cancelAppointmentID)) {
+                        appointment.CancelAppointment();
+                        System.out.println("Appointment Cancelled");
+                        break;
+                    }
+                }
+            } else {
+                System.out.println("Invalid Choice");
+            }
+            // Remove completed or cancelled appointments
+            ArrayList<Appointment> appointmentsToRemove = new ArrayList<>();
+            for (Appointment appointment : appointments) {
+                if (appointment.getStatus().equals("FINISHED") || appointment.getStatus().equals("CANCELLED")) {
+                    appointmentsToRemove.add(appointment);
+                }
+            }
+            appointments.removeAll(appointmentsToRemove);
+        }
     }
 
     // search patients method to be used whenever searching by id is required

@@ -5,10 +5,12 @@ public class Main {
     public static void main(String[] args) {
         // arraylists holding the total number of doctors, Beds and patients in the
         ArrayList<User> allUsers = new ArrayList<>(100);
-        Bed[] allBeds = new Bed[500];
-        // hospital;
-
-        // creating an admin user
+        Bed[] allBeds = new Bed[50];
+        for (int i = 0; i < allBeds.length; i++) {
+            allBeds[i] = new Bed(i + 1);
+        } // initializing all beds with bed number
+          // hospital;
+          // creating an admin user
         User Admin = new User();
         Admin.RegisterUser("Admin", "Admin234", "A-1", "Administrator");
         allUsers.add(Admin);
@@ -52,7 +54,7 @@ public class Main {
                 do {
                     Choice = input.nextInt();
                     System.out.println(
-                            "Enter 1 to view Patient : \nEnter 2 to Write Prescription\n Enter 3 to UpdatePatient Data ");
+                            "Enter 1 to view Patient : \nEnter 2 to Write Prescription\n Enter 3 to UpdatePatient Data\nEnter 4 to Manage Appointments ");
                     if (Choice == 1) {
                         ((Doctor) CurrentUser).ViewPatients();
 
@@ -62,6 +64,8 @@ public class Main {
                     } else if (Choice == 3) {
                         ((Doctor) CurrentUser).UpdatePatientNotes();
 
+                    } else if (Choice == 4) {
+                        ((Doctor) CurrentUser).ManageAppointments();
                     } else if (Choice == 0) {
                         System.out.println("Exited Successfully : ");
                     } else {
@@ -77,18 +81,12 @@ public class Main {
                     if (Choice == 1) {
                         System.out.println(CurrentUser);
                     } else if (Choice == 2) {
-                        // CurrentUser.ViewMedicalRecord();
-
-                    } else if (Choice == 3) {// !not complete
+                        ((Patient) CurrentUser).getRecord().viewMedicalRecord();// to view the current Medical Record
+                    } else if (Choice == 3) {// !Complete
                         System.out.println("Enter 1 to view Available items\n Enter 2 to Buy items :\n 0 to exit : ");
                         myInventory.Displayinventory();
-                       double bill = myInventory.BuyItems();
-                    
-                        
-
-                    } else if (Choice == 4) {// !not complete
-
-                        // TODO: Later
+                        double bill = myInventory.BuyItems();
+                        ((Patient) CurrentUser).UpdateBilling(bill);
                     } else if (Choice == 5) {
                         System.out.println(
                                 "What type of Doctor do you want to visit :\nTypeA\nTypeB\nTypeC\nTypeD\nTypeE");
@@ -116,15 +114,16 @@ public class Main {
                         System.out.println("wrong choice : ");
                     }
                 } while (Choice != 0);
-            } else if (CurrentUser.getID() == "A-1") {
+            } else if (CurrentUser.getID().equals("A-1")) {
                 System.out.println(
-                        "1 to add Doctor : \n2 to schedule Appointment : \n3 Manage inventory :\n4 send notification :\n5 Edit patients ");
+                        "1 to add Doctor : \n2 to schedule Appointment : \n3 Manage inventory :\n5 Edit patients\n 0 to exit ");
                 Choice = input.nextInt();
                 if (Choice == 1) {// ! Complete
                     Doctor newdoc = new Doctor();
                     newdoc.SetDoctor();
                     allUsers.add(newdoc);// adds new doctor to array list of users
                 } else if (Choice == 2) {// ! Complete
+                    // to schedule Appointments :
                     System.out.println("Enter Id of the Doctor for whom you want to schedule Appointment : ");
                     String tempID = input.nextLine();
                     Doctor dtemp = null;
@@ -152,8 +151,6 @@ public class Main {
                         myInventory.updateinventory();
                     } else if (Choice == 3) {
                         myInventory.Displayinventory();
-                    } else if (Choice == 4) {
-                        // ! not Complete
                     } else if (Choice == 5)// ! Complete
                     {
                         System.out.println("Enter the ID of the patient you want to edit : ");
@@ -191,6 +188,7 @@ public class Main {
         for (User user : allUsers) {
             if (user instanceof Doctor) {
                 Doctor d = (Doctor) user;
+                if(d.getSpecialization().equals(type))
                 System.out.println(d);
             }
         }

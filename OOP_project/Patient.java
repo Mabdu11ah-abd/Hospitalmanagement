@@ -9,19 +9,12 @@ public class Patient extends User{
     private Doctor DoctorIncharge;
     private Bed BedUsed;
     private MedicalRecord Record;
-
     private Billing Bill;
     public Billing getBill() {
         return Bill;
     }
     public void setBill(Billing bill) {
         Bill = bill;
-    }
-    private Prescription patientprescription;
-
-
-    public void setPatientprescription(Prescription patientprescription) {
-        this.patientprescription = patientprescription;
     }
     public void SetPatient() {
         // scanner variable for input
@@ -70,19 +63,19 @@ public class Patient extends User{
         this.status = status;
         System.out.println("Patient information updated for Patient ID: " + ID);
     }
-    public void viewPrescription()
-    {
-    this.patientprescription.DisplayPrescription();
-    }
 
-    public void UpdateBilling() {
+    public void UpdateBilling(double amount) {//meant for user to buy items 
+        Bill.UpdatePayment(amount);
+    }
+    public void UpdateBilling()//meant for admin to discharge patient
+    {
+        Bill.finalPayment(this);
+        this.BedUsed.setDaysOccupied(0);//reset bed occupied to zero to show that patient is discharged : 
     }
         public String getID() {
         return ID;
     }
-        public Prescription getPatientprescription() {
-        return patientprescription;
-    }
+   
         @Override
         public String toString() {
             return "Patient [name=" + name + ", ID=" + ID + ", age=" + age + ", address=" + address + "]";

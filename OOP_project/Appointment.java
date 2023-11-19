@@ -5,15 +5,25 @@ public class Appointment {
     Scanner input = new Scanner(System.in);
 
     private String AppointmentID;
+    public String getAppointmentID() {
+        return AppointmentID;
+    }
     private Patient AppointmentPatient; // will store patient type object
     private Doctor AppointmentDoctor; // will store Doctor type Object
     private String AppointmentDate; // Google how to use Date Class
     private String Appointmenttime; // String type to be set by user
     private String status; // can either be Pending, Finished or Cancelled;
 
-    public void ScheduleAppointment(String AppointmentID, Patient AppointmentPatient, Doctor AppointmentDoctor) {
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Appointment(Patient AppointmentPatient, Doctor AppointmentDoctor) {
         System.out.println("SCHEDULE APPOINTMENT SECTION");
-        this.AppointmentID = AppointmentID;
         this.AppointmentPatient = AppointmentPatient;
         this.AppointmentDoctor = AppointmentDoctor;
         System.out.println("Enter the Date you want to take the Appointment from Doctor ");
@@ -21,7 +31,7 @@ public class Appointment {
         System.out.println("Enter appointment time : ");
         Appointmenttime= input.nextLine();
 
-        status = "Pending";
+        status = "PENDING";
         // set the details of the appointment
     }
 
@@ -52,13 +62,13 @@ public class Appointment {
         int choice = input.nextInt();
         switch (choice) {
             case 1:
-                status = "Pending";
+                status = "PENDING";
                 break;
             case 2:
-                status = "Finished";
+                status = "FINISHED";
                 break;
             case 3:
-                status = "Cancelled";
+                status = "CANCELLED";
                 break;
             default:
                 System.out.println("Invalid choice");

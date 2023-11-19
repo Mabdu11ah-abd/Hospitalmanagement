@@ -3,9 +3,9 @@ import java.util.Date;
 import java.util.Scanner;
 public class MedicalRecord {
     private int age;
-    private Date admissionDate;
-    private Date dischargeDate;
-    private String record;
+    private String admissionDate;
+    private String dischargeDate;
+    private String Notes;
     private ArrayList<Prescription> prescriptions; // As Prescription is another class
 
     // Getters and Setters for all fields
@@ -16,49 +16,29 @@ public class MedicalRecord {
     public MedicalRecord() {
     }
 
-    public MedicalRecord(int age, Date admissionDate, Date dischargeDate) {
+    public MedicalRecord(int age, String admissionDate) {
         setAge(age);
-        setAdmissionDate(admissionDate);
-        setDischargeDate(dischargeDate);
+this.admissionDate=admissionDate;  
     }
 
     public void setAge(int age) {
         this.age = age;
     }
 
-    public Date getAdmissionDate() {
-        return admissionDate;
+
+    public String getNotes() {
+        return Notes;
     }
 
-    public void setAdmissionDate(Date admissionDate) {
-        this.admissionDate = admissionDate;
+    public void setNotes(String record) {
+        this.Notes = record;
     }
-
-    public Date getDischargeDate() {
-        return dischargeDate;
-    }
-
-    public void setDischargeDate(Date dischargeDate) {
-        this.dischargeDate = dischargeDate;
-    }
-
-    public String getRecord() {
-        return record;
-    }
-
-    public void setRecord(String record) {
-        this.record = record;
-    }
-
-    public void setPrescriptions(ArrayList<Prescription> prescriptions) {
-        this.prescriptions = prescriptions;
-    }
-
+    
     // Method to update the patient's record
     public void updateRecord(String newRecord) {
         if (admissionDate != null && dischargeDate == null) {
             // Only allow updating record if the patient is currently admitted
-            this.record = newRecord;
+            this.Notes = newRecord;
             System.out.println("Record updated: " + newRecord);
         } else {
             System.out.println("Cannot update record. The patient is either discharged or not admitted.");
@@ -76,18 +56,17 @@ public class MedicalRecord {
         }
     }
     //Method to get data of all or latest prescription of the patient.
-    ArrayList<Prescription> allPrescriptions = new ArrayList<>(prescriptions);
-    public void getPrescriptions() {
-        System.out.println("Enter 1 to see all prescriptions \n Enter 2 to see latest prescription");
+    public void viewMedicalRecord() {
+        System.out.println("Enter 1 to see all prescriptions \nEnter 2 to see latest prescription");
         Scanner input = new Scanner(System.in);
         int choice = input.nextInt();
         if (choice == 1) {
-            for (int i = 0; i < allPrescriptions.size(); i++) {
-                System.out.println(allPrescriptions.get(i));
+            for (int i = 0; i < prescriptions.size(); i++) {
+                System.out.println(prescriptions.get(i));
             }
         } else if (choice == 2) {
-            int latestPrescription = allPrescriptions.size() - 1;
-            System.out.println(allPrescriptions.get(latestPrescription));
+            int latestPrescription =prescriptions.size()-1;
+            System.out.println(prescriptions.get(latestPrescription));
         }
         else {
             System.out.println("Invalid Choice");

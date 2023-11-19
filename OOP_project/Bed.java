@@ -3,6 +3,11 @@ public class Bed {
     private int bedNumber;
     private boolean isOccupied;
 
+    public Bed(int daysOccupied) {
+        DaysOccupied = daysOccupied;
+        this.bedNumber = 0;
+    }
+
     // Getters and Setters for all fields
     public int getBedNumber() {
         return bedNumber;

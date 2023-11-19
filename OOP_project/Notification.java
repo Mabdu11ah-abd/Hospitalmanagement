@@ -1,6 +1,5 @@
-import java.util.Date;
 
-public class Notification {
+public abstract class Notification {
      private String NotificationDate;
      private String Content;
      private boolean isRead;
