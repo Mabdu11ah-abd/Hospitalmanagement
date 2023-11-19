@@ -172,6 +172,7 @@ public class Main {
 
     private static User loginUser(ArrayList<User> allUsers, Scanner input) {
         System.out.println("Enter Your ID and Password: ");
+        input.nextLine();
         String tempID = input.nextLine();
         String tempPassword = input.nextLine();
 
