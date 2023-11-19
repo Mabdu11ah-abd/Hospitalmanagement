@@ -41,7 +41,6 @@ public class Doctor extends User {
 
     public void UpdatePatientNotes() {
         Scanner input = new Scanner(System.in);// scanner variable
-
         // input validation for patient id
         System.out.println("Enter the ID of the patient whos data you want to update : ");
         String searchID = input.nextLine();

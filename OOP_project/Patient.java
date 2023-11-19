@@ -4,7 +4,6 @@ public class Patient extends User {
     private int age;
     private String address;
     private Doctor DoctorIncharge;
-
     private Bed BedUsed;
     private MedicalRecord Record = new MedicalRecord();
     private Billing Bill = new Billing();

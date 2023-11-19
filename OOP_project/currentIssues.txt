@@ -1,4 +1,4 @@
-AddDoctor Method does not work make it so that when i add patient to doctor the patient also gets that doctor assigned to his variable 
+AddDoctor Method does not work make it so that when i add patient to doctor the patient also gets that  to his vdoctor assignedariable 
 
 Fix login menu almost done 
 finish edit patients section

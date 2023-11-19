@@ -205,15 +205,24 @@ public class Main {
                     else if (Choice == 5) {
                             System.out.println("Enter 1 to assign bed to patient : ");
                             System.out.println("Enter 2 to update Patient Information : ");
+                            System.out.println("Enter 3 to vacate bed from Patient : ");
                             Choice = input.nextInt();
                             input.nextLine();
                             if (Choice == 1) {
                                 System.out.println("Enter Bed number to assign to patient : ");
                                 int bednumber = input.nextInt();
-                                if (allBeds[bednumber].isOccupied()) {
+                                if (!allBeds[bednumber].isOccupied()) {
                                     System.out.println("enter Number of days bed has been Occupied  : ");
                                     allBeds[bednumber].setDaysOccupied(input.nextInt());
                                     input.nextLine();
+                                    System.out.println("Enter the ID of patient Occupying Bed : ");
+                                    String tempID = input.nextLine();
+                                    if (searchUsers(tempID, allUsers)!=1) {
+                                        ((Patient)allUsers.get(searchUsers(tempID, allUsers))).setBedUsed(allBeds[bednumber]);
+                                    }
+                                    else{
+                                        System.out.println("Incorrect ID has been Entered : ");
+                                    }
                                     System.out.println("Bed has been Assigned : ");
                                 } else {
                                     System.out.println("Bed is already Occupied ");
@@ -223,6 +232,24 @@ public class Main {
                                 String searchID = input.nextLine();
                                 if (searchUsers(searchID, allUsers) != 1) {
                                    ((Patient) allUsers.get(searchUsers(searchID, allUsers))).SetPatient();
+                                }
+                                else if(Choice==3)
+                                {
+                                    System.out.println("Vacating Bed : ");
+                                    System.out.println("Enter ID of patient you want to vactate : ");
+                                     System.out.println("Enter the ID of patient Occupying Bed : ");
+                                    String tempID = input.nextLine();
+                                    if (searchUsers(tempID, allUsers)!=1) {
+                                       Patient temp=(Patient)allUsers.get(searchUsers(tempID, allUsers));
+                                       temp.getBill().finalPayment(temp);
+                                       temp.getBedUsed().vacantBed();
+                                       temp.setBedUsed(null);
+                                    }
+
+                                }
+                                else
+                                {
+                                    System.out.println("Invalid Choice : ");
                                 }
                             }
                         } else if (Choice == 6) {

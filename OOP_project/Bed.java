@@ -1,7 +1,7 @@
 public class Bed {
     private int DaysOccupied;
     private int bedNumber;
-    private boolean isOccupied;
+    private boolean isOccupied=false;
 
     public Bed(int daysOccupied) {
         DaysOccupied = daysOccupied;
