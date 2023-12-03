@@ -63,6 +63,7 @@ public class Doctor extends User {
         Scanner input = new Scanner(System.in);
         System.out.print("Enter 1 to view patient by ID : \nEnter 2 to view all patients : ");
         int choice = input.nextInt();
+        input.nextLine();
         if (choice == 1) {
             System.out.println("Enter the ID of the patient whos data you want to view : ");
             String searchID = input.nextLine();
@@ -92,6 +93,7 @@ public class Doctor extends User {
             System.out.println("Enter 0 to exits");
 
             int choice = input.nextInt();
+            input.nextLine();
             if (choice == 0) {
                 break;
             }

@@ -3,9 +3,8 @@ public class Bed {
     private int bedNumber;
     private boolean isOccupied=false;
 
-    public Bed(int daysOccupied) {
-        DaysOccupied = daysOccupied;
-        this.bedNumber = 0;
+    public Bed(int bedNumber) {
+        this.bedNumber=bedNumber;
     }
 
     // Getters and Setters for all fields
@@ -21,8 +20,8 @@ public class Bed {
         return isOccupied;
     }
 
-    public void setOccupied(boolean occupied) {
-        isOccupied = occupied;
+    public void setOccupied() {
+        isOccupied = true;
     }
     // Method to occupy the bed
     public void occupyBed() {

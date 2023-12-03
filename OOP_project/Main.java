@@ -65,7 +65,7 @@ public class Main {
             if (CurrentUser instanceof Doctor) {
                 do {
                     System.out.println(
-                            "Enter 1 to view Patient: \nEnter 2 to Write Prescription\n Enter 3 to Update Patient Data\nEnter 4 to Manage Appointments ");
+                            "Enter 1 to view Patient: \nEnter 2 to Write Prescription\n Enter 3 to Update Patient Data\nEnter 4 to Manage Appointments\n0 to exit ");
                     Choice = input.nextInt();
                     input.nextLine();// clearing input buffer
                     if (Choice == 1) {
@@ -89,7 +89,7 @@ public class Main {
                 while (true) {// Loop runs till not equal to zero
 
                     System.out.println(
-                            "Enter 1 To view Current Information \nEnter 2 to view Medical Record:\nEnter 3 to Buy Medicine from Inventory:\nEnter 4 to generate Invoice :  \nEnter 5 to view Available Doctors:\nEnter 6 to Book Doctor:\nEnter 0 to Exit: ");
+                        "Enter 1 To view Current Information \nEnter 2 to view Medical Record:\nEnter 3 to Buy Medicine from Inventory:\nEnter 4 to generate Invoice :  \nEnter 5 to view Available Doctors:\nEnter 6 to Book Doctor:\nEnter 0 to Exit: ");
                     int patientChoice = input.nextInt();
                     input.nextLine();// Consuming new line Character
                     if (patientChoice == 0) {
@@ -150,7 +150,7 @@ public class Main {
             } else if (CurrentUser.getID().equals("A-1")) {// admin manages doctors,beds ,patient data ,inventory
                 while (true) {
                     System.out.println(
-                            "1 to add Doctor:\n2 to schedule Appointment:\n3 Manage inventory:\n5 Edit patients\n6 to view all patients\n 0 to exit ");
+                            "1 to add Doctor:\n2 to schedule Appointment:\n3 Manage inventory:\n5 Edit patients\n6 to view all patients\n0 to exit ");
                     Choice = input.nextInt();
                     input.nextLine();// consume newline
                     if (Choice == 0) {
@@ -166,12 +166,7 @@ public class Main {
                             System.out.println("Enter the ID of the Patient you want to add: ");
                             String searchPatientsID = input.nextLine();
                             if (searchUsers(searchPatientsID, allUsers) != -1) {
-                                newdoc.assignpatient((Patient) allUsers.get(searchUsers(searchPatientsID, allUsers)));// assigns
-                                                                                                                      // patients
-                                                                                                                      // to
-                                                                                                                      // new
-                                                                                                                      // Doctor
-                                                                                                                      // :
+                                newdoc.assignpatient((Patient) allUsers.get(searchUsers(searchPatientsID, allUsers)));
                             }
                         }
                         allUsers.add(newdoc); // adds new doctor to the array list of users
@@ -197,8 +192,6 @@ public class Main {
                         }
                         Appointment tempAppointment = new Appointment(ptemp, dtemp);
                         dtemp.addAppointment(tempAppointment);
-                        allUsers.set(searchUsers(tempID, allUsers), dtemp);// sets appointment in location where doctor
-                                                                           // is
                     } else if (Choice == 3) {
                         // Complete
                         System.out.println("1 to add item, 2 to update item, 3 to view Inventory: ");
@@ -212,22 +205,23 @@ public class Main {
                         }
                     } else if (Choice == 5) {
                         System.out.println("Enter 1 to assign bed to patient : ");
-                        System.out.println("Enter 2 to update   Patient Information : ");
+                        System.out.println("Enter 2 to update Patient Information : ");
                         System.out.println("Enter 3 to vacate bed from Patient : ");
                         Choice = input.nextInt();
                         input.nextLine();
                         if (Choice == 1) {
                             System.out.println("Enter Bed number to assign to patient : ");
                             int bednumber = input.nextInt();
-                            if (!allBeds[bednumber].isOccupied()) {
+                            if (!allBeds[bednumber-1].isOccupied()) {
                                 System.out.println("enter Number of days bed has been Occupied  : ");
-                                allBeds[bednumber].setDaysOccupied(input.nextInt());
+                                allBeds[bednumber-1].setDaysOccupied(input.nextInt());
                                 input.nextLine();
                                 System.out.println("Enter the ID of patient Occupying Bed : ");
                                 String tempID = input.nextLine();
                                 if (searchUsers(tempID, allUsers) != 1) {
+                                    allBeds[bednumber-1].setOccupied();    
                                     ((Patient) allUsers.get(searchUsers(tempID, allUsers)))
-                                            .setBedUsed(allBeds[bednumber]);
+                                            .setBedUsed(allBeds[bednumber-1]);
                                 } else {
                                     System.out.println("Incorrect ID has been Entered : ");
                                 }
@@ -244,7 +238,6 @@ public class Main {
 
                         } else if (Choice == 3) {
                             System.out.println("Vacating Bed : ");
-                            System.out.println("Enter ID of patient you want to vactate : ");
                             System.out.println("Enter the ID of patient Occupying Bed : ");
                             String tempID = input.nextLine();
                             if (searchUsers(tempID, allUsers) != 1) {
@@ -253,14 +246,13 @@ public class Main {
                                 temp.getBedUsed().vacantBed();
                                 temp.setBedUsed(null);
                             }
-
                         }
 
                         else {
                             System.out.println("Invalid Choice : ");
                         }
                     } else if (Choice == 6) {
-                        System.out.println("List of Patients:");
+                        System.out.println("List of Patients : ");
                         for (User user : allUsers) {
                             if (user instanceof Patient) {
                                 Patient patient = (Patient) user;
@@ -282,7 +274,7 @@ public class Main {
 
         for (User user : allUsers) {
             if (user.login(tempID, tempPassword)) {
-                System.out.println("Logged in Successfully.");
+                System.out.println("Logged in Successfully: ");
                 return user;
             }
         }

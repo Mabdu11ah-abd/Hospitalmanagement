@@ -5,7 +5,7 @@ public class MedicalRecord {
     private String admissionDate;
     private String dischargeDate;
     private String Notes;
-    private ArrayList<Prescription> prescriptions; // As Prescription is another class
+    private ArrayList<Prescription> prescriptions= new ArrayList<>(); // As Prescription is another class
 
     public void editRecord() {
         Scanner input = new Scanner(System.in);
@@ -37,7 +37,7 @@ public class MedicalRecord {
         if (choice == 1) {
             if(prescriptions.isEmpty())
             {
-                System.out.println("There are prescriptions : ");
+                System.out.println("There are No prescriptions : ");
                 return;
             }
             for (int i = 0; i < prescriptions.size(); i++) {

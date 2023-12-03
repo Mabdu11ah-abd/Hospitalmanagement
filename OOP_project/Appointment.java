@@ -30,6 +30,9 @@ public class Appointment {
         AppointmentDate = input.nextLine();
         System.out.println("Enter appointment time : ");
         Appointmenttime= input.nextLine();
+        System.out.println("Enter Appointment ID : ");
+        this.AppointmentID=input.nextLine();
+
 
         status = "PENDING";
         // set the details of the appointment
